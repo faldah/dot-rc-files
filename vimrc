@@ -55,12 +55,25 @@ filetype plugin indent on
 
 
 " Enable syntax highlighting
-syntax enable
+execute pathogen#infect()
+syntax on
 colorscheme zenburn
 
 " change cursor apperance in inster mode
 " (Stolen from the awesome Derek Wyatt)
 set guicursor=n-v-c:block-Cursor-blinkon0,ve:ver35-Cursor,o:hor50-Cursor,i-ci:ver25-Cursor,r-cr:hor20-Cursor,sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
+
+" Syntastic settings
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_ruby_mri_exec = "~/.rbenv/shims/ruby"
 
 " tab completion for help
 set wildmenu
